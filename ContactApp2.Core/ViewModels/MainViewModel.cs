@@ -21,6 +21,10 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private Contact? _selectedContact = null;
+
+    [ObservableProperty]
+    private bool _showDetails = false;
+
     public MainViewModel(IRepository repository)
     {
         _repository = repository;
@@ -48,6 +52,12 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     ObservableCollection<Contact> _contacts = new();
+
+    [RelayCommand]
+    void Toggle()
+    {
+        this.ShowDetails = !this.ShowDetails;
+    }
 
     [RelayCommand]
     void Load()
