@@ -17,7 +17,7 @@ namespace ContactApp2.Core.ViewModels;
 public partial class MainViewModel : ObservableObject
 {
     IRepository _repository;
-    private bool IstLoaded = false;
+    private bool IsLoaded = false;
 
     [ObservableProperty]
     private Contact? _selectedContact = null;
@@ -62,7 +62,7 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     void Load()
     {
-        if (this.IstLoaded)
+        if (!this.IsLoaded)
         {
             var contacts = _repository.Get();
 
@@ -72,7 +72,7 @@ public partial class MainViewModel : ObservableObject
                 System.Diagnostics.Debug.WriteLine(contact);
                 Contacts.Add(contact);
             }
-            this.IstLoaded = !this.IstLoaded;
+            this.IsLoaded = !this.IsLoaded;
 
         }
     }
