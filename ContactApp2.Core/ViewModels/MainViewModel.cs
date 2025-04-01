@@ -22,6 +22,11 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private Contact? _selectedContact = null;
 
+    partial void OnSelectedContactChanged(Contact? value)
+    {
+        this.ShowDetails = true;
+    }
+
     [ObservableProperty]
     private bool _showDetails = false;
 
